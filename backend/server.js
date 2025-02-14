@@ -11,7 +11,7 @@ cloudinary.v2.config({
 });
 
 app.use(cors({
-  origin: 'https://job-portal-fawn-phi.vercel.app',
+  origin: process.env.FRONTEND_URL,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
