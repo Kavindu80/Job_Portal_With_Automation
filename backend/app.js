@@ -3,7 +3,6 @@ import { config } from "dotenv";
 import cookieParser from "cookie-parser";
 import { connection } from "./database/connection.js";
 import { errorMiddleware } from "./middlewares/error.js";
-import cors from "cors";
 import fileUpload from "express-fileupload";
 import userRouter from "./routes/userRouter.js";
 import jobRouter from "./routes/jobRouter.js";
@@ -13,14 +12,6 @@ import { newsLetterCron } from "./automation/newsLetterCron.js";
 
 const app = express();
 config({ path: "./config/config.env" });
-
-app.use(cors({
-  origin: 'https://job-portal-fawn-phi.vercel.app',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
 
 app.use(cookieParser());
 app.use(express.json());
