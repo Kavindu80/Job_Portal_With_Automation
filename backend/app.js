@@ -13,6 +13,13 @@ import { newsLetterCron } from "./automation/newsLetterCron.js";
 const app = express();
 config({ path: "./config/config.env" });
 
+app.use(cors({
+  origin: 'https://job-portal-fawn-phi.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
