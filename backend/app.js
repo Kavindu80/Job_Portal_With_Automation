@@ -22,10 +22,6 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
-  res.send('Job Portal Backend is running!');
-});
-
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -44,5 +40,10 @@ app.use("/api/v1/application", applicationRouter);
 newsLetterCron()
 connection();
 app.use(errorMiddleware);
+
+app.get('/', (req, res) => {
+  res.send('Job Portal Backend is running!');
+});
+
 
 export default app;
