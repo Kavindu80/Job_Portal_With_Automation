@@ -1,6 +1,5 @@
 import express from "express";
 import { config } from "dotenv";
-import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connection } from "./database/connection.js";
 import { errorMiddleware } from "./middlewares/error.js";
@@ -13,22 +12,6 @@ import { newsLetterCron } from "./automation/newsLetterCron.js";
 
 const app = express();
 config({ path: "./config/config.env" });
-
-const allowedOrigins = ['https://job-portal-fawn-phi.vercel.app']; 
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET, POST, PUT, DELETE, OPTIONS',
-  allowedHeaders: 'Authorization, Content-Type',
-  credentials: true
-}));
-
 
 app.use(cookieParser());
 app.use(express.json());
