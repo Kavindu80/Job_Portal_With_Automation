@@ -1,8 +1,7 @@
 import app from "./app.js";
-const express = require('express');
 import cloudinary from "cloudinary";
 import cors from "cors";
-const app = express();
+
 
 
 cloudinary.v2.config({
