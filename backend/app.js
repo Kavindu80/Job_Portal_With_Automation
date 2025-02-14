@@ -16,11 +16,15 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: "https://job-portal.vercel.app",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
+app.get('/', (req, res) => {
+  res.send('Job Portal Backend is running!');
+});
 
 app.use(cookieParser());
 app.use(express.json());
