@@ -41,9 +41,6 @@ newsLetterCron()
 connection();
 app.use(errorMiddleware);
 
-app.get('/', (req, res) => {
-  res.send('Job Portal Backend is running!');
-});
 
 
 export default app;
