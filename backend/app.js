@@ -16,6 +16,7 @@ config({ path: "./config/config.env" });
 
 app.use(cors({
   origin: 'https://job-portal-fawn-phi.vercel.app',
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
