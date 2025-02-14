@@ -14,13 +14,21 @@ import { newsLetterCron } from "./automation/newsLetterCron.js";
 const app = express();
 config({ path: "./config/config.env" });
 
-app.use(
-  cors({
-    origin: "https://job-portal-fawn-phi.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+const allowedOrigins = ['https://job-portal-fawn-phi.vercel.app']; 
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET, POST, PUT, DELETE, OPTIONS',
+  allowedHeaders: 'Authorization, Content-Type',
+  credentials: true
+}));
+
 
 app.use(cookieParser());
 app.use(express.json());
